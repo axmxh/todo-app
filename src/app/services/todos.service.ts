@@ -17,6 +17,7 @@ export class TodosService {
   constructor(private http: HttpClient) {}
 
   url = 'https://my-json-server.typicode.com/axmxh/todos';
+  // url = "http://localhost:3000/"
 
   getTodos(): Observable<Todo[]> {
     return this.http
