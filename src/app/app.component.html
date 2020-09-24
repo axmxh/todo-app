@@ -1,0 +1,54 @@
+<div class="todo">
+  <div class="todo__container">
+    <button class="todo__dir" (click)="toggleDir(dir)">
+      {{ dir === "rtl" ? "EN" : "AR" }}
+    </button>
+    <!-- Date Component -->
+    <div class="todo__wrapper">
+      <app-date></app-date>
+      <ul class="todo__list">
+        <li class="todo__list--item" *ngFor="let todo of todos; let i = index">
+          <div class="content" [class.done]="todo.done">
+            <span *ngIf="editingId !== todo.id">{{ todo.title }} </span>
+            <input
+              type="text"
+              [(ngModel)]="todo.title"
+              *ngIf="editingId === todo.id"
+            />
+            <div class="content__actions"></div>
+          </div>
+          <div class="actions">
+            <button
+              class="save"
+              *ngIf="editingId === todo.id"
+              (click)="edit(todo)"
+            >
+              <i class="fa fa-save"></i>
+            </button>
+            <button class="delete" (click)="delete(todo.id)">
+              <i class="fa fa-trash"></i>
+            </button>
+            <button class="edit" (click)="editContent(todo)">
+              <i class="fa fa-edit"></i>
+            </button>
+            <span class="check__done">
+              <input
+                class="check__done--input"
+                type="checkbox"
+                [(ngModel)]="todo.done"
+                (change)="edit(todo)"
+              />
+              <span class="check__done--check"></span>
+            </span>
+          </div>
+        </li>
+      </ul>
+      <div class="todo__add--input">
+        <input type="text" [(ngModel)]="todo" placeholder="Add Task Here" />
+      </div>
+    </div>
+    <div class="todo__add--btn">
+      <button [disabled]="!todo" (click)="add()">+</button>
+    </div>
+  </div>
+</div>

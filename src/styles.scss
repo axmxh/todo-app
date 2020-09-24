@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+
+html[dir="rtl"] {
+  .todo__dir {
+    left: auto;
+    right: 0;
+  }
+}
+
+@media (max-width: 991px) {
+  .todo__container {
+    width: 100% !important;
+  }
+}

@@ -1,0 +1,220 @@
+.todo {
+  display: flex;
+  justify-content: center;
+  font-family: Arial;
+  color: #505050;
+  padding: 100px 0;
+}
+
+.todo__container {
+  position: relative;
+  width: 30%;
+  max-width: 500px;
+  background: #fff;
+  padding: 4em 0;
+}
+
+.todo__dir {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0;
+  background: #505050;
+  color: white;
+  padding: 5px 20px;
+  cursor: pointer;
+}
+
+.todo__wrapper {
+  padding: 0 4em;
+}
+
+.todo__list {
+  list-style: none;
+  padding-inline-start: 0;
+  // padding: 0 4em;
+  height: 400px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin-inline-end: -30px;
+  padding-inline-end: 15px;
+
+  /* width */
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #50e3a4;
+  }
+}
+
+.todo__list--item {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em 0;
+  height: 2em;
+  line-height: 2em;
+  font-size: 1.2em;
+
+  .content {
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 250px;
+    button {
+      position: absolute;
+      right: 5px;
+      border: none;
+      background: none;
+    }
+    input {
+      // padding: 5px 0px;
+      border: none;
+      border-bottom: 1px solid;
+      height: 1.5em;
+      line-height: 1.5em;
+      font-size: 1em;
+    }
+    &.done {
+      color: #cecccc;
+    }
+  }
+  .actions {
+    width: 35%;
+    text-align: right;
+    margin-inline-end: 30px;
+    button {
+      border: 3px #cecccc solid;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      background: none;
+      color: #cecccc;
+      margin-inline-end: 4px;
+      i {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      &:hover {
+        cursor: pointer;
+        border: 3px #50e3a4 solid;
+        color: #50e3a4;
+      }
+      &.delete {
+        &:hover {
+          cursor: pointer;
+          border: 3px #e36c50 solid;
+          color: #e36c50;
+        }
+      }
+    }
+  }
+}
+
+.todo__add--btn {
+  position: absolute;
+  bottom: -2.5em;
+  width: 100%;
+  text-align: center;
+  button {
+    border: none;
+    background: #50e3a4;
+    border-radius: 50%;
+    height: 5em;
+    width: 5em;
+    color: #0fad69;
+    cursor: pointer;
+    &:disabled {
+      color: #4a4a4a;
+      background: #cecccc;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.todo__add--input {
+  // padding: 0 4em;
+  margin-top: 2em;
+  input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid;
+    height: 2em;
+    line-height: 2em;
+    padding: 0 10px;
+    font-size: 1.4em;
+  }
+}
+
+.check__done {
+  position: relative;
+  top: 2px;
+  .check__done--input {
+    width: 30px;
+    height: 30px;
+    appearance: none;
+    position: absolute;
+    top: 0;
+    z-index: 999;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+
+    &:checked ~ .check__done--check {
+      // width: 30px;
+      // height: 30px;
+      position: relative;
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        margin: auto;
+        width: 30px;
+        height: 30px;
+        background: url("../assets/img/check.png") no-repeat;
+        background-size: 65% 65%;
+        background-position: center;
+        border: 3px solid #58e4a7;
+        border-radius: 50%;
+        box-sizing: border-box;
+      }
+    }
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 30px;
+    height: 30px;
+    // background: url("../assets/img/check-gray.png") no-repeat;
+    background-size: 65% 65%;
+    background-position: center;
+    border: 3px solid #cecccc;
+    border-radius: 50%;
+    box-sizing: border-box;
+  }
+}
