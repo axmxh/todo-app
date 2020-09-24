@@ -51,12 +51,11 @@ export class AppComponent implements OnInit {
   editContent(todo): void {
     this.editingId = todo.id;
     this.editing = true;
-
     console.log('editContent', todo, this.editing);
   }
 
   add() {
-    let id = this.todos[this.todos.length - 1]?.id + 1 || 0;
+    const id = this.todos[this.todos.length - 1]?.id + 1 || 0;
     // let id = ~~(Math.random() * 100 + 1);
     this.todosService
       .create({
@@ -64,9 +63,9 @@ export class AppComponent implements OnInit {
         title: this.todo,
         done: this.done,
       })
-      .subscribe((res) => {
-        const { id, title, done } = res;
-        this.todos.push({ id, title, done });
+      .subscribe((res: any) => {
+        // const { id, title, done } = res;
+        this.todos.push(res);
         this.todo = '';
         console.log('create res', res);
       });
